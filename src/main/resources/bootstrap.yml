@@ -1,0 +1,119 @@
+server:
+  port: 8001
+# 日志配置
+logging:
+  level:
+    com.rocky.user: debug
+    org.springframework: warn  
+    com.alibaba.nacos.client.naming: error
+spring:
+  application:
+    name: project-name
+  profiles: 
+    active: dev
+  devtools:
+    restart:
+      enabled: true
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      maxFileSize: 5MB  #单位必须大写MB或不写(即为B)
+      maxRequestSize: 10MB
+  
+feign: 
+  hystrix: 
+    enabled: true
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' 
+
+
+# MyBatis
+mybatis:
+    # 搜索指定包别名
+    typeAliasesPackage: com.rocky
+    # 配置mapper的扫描，找到所有的mapper.xml映射文件
+    mapperLocations: classpath*:mapper/**/*Mapper.xml
+
+mapper:
+  not-empty: true
+  identity: MYSQL
+
+# PageHelper分页插件
+pagehelper: 
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+---
+#开发环境配置
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+# Swagger配置-是否开启swagger
+swagger:
+  enabled: true
+
+---
+#测试环境配置
+spring:
+  profiles: test
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.40.145:8848
+        file-extension: yml
+      discovery:
+        server-addr: 192.168.40.145:8848
+
+# Swagger配置-是否开启swagger
+swagger:
+  enabled: true
+
+---
+#预发环境配置
+#spring:
+#  profiles: pre
+#  cloud:
+#    nacos:
+#      config:
+#        server-addr: 127.0.0.1:8848
+#        file-extension: yml
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+
+# Swagger配置-是否开启swagger
+#swagger:
+#  enabled: true
+
+---
+#生产环境配置
+#spring:
+#  profiles: prod
+#  cloud:
+#    nacos:
+#      config:
+#        #阿里云地址
+#        endpoint: XXXXXXXXXXXXXXXXX
+#        namespace: XXXXXXXXXXXXXXXXX
+#        access-key: XXXXXXXXXXXXXXXXX
+#        secret-key: XXXXXXXXXXXXXXXXX
+#        file-extension: properties
+
+# Swagger配置-是否开启swagger
+#swagger:
+#  enabled: true

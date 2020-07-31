@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.1.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.rocky</groupId>
+	<artifactId>project-name</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
+	<name>project-name</name>
+	<description>公销社集成脚手架</description>
+
+	<developers>
+		<developer>
+			<name>Baizhen</name>
+			<url>https://github.com/gaoqinibm/</url>
+			<email>13634195169@139.com</email>
+		</developer>
+	</developers>
+
+	<properties>
+		<sociality.common.version>1.0.1-SNAPSHOT</sociality.common.version>
+		<sociality.redis.version>1.0.1-SNAPSHOT</sociality.redis.version>
+		<framework.dependencies.version>1.0.1-SNAPSHOT</framework.dependencies.version>
+		<pennyworth.adaptor.version>1.0.1-SNAPSHOT</pennyworth.adaptor.version>
+		<swagger.dependencies.version>1.0.1-SNAPSHOT</swagger.dependencies.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>11</java.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<spring.boot.version>2.3.2.RELEASE</spring.boot.version>
+		<pagehelper.boot.version>1.2.13</pagehelper.boot.version>
+		<oshi.version>5.1.2</oshi.version>
+		<commons.io.version>2.5</commons.io.version>
+		<commons.fileupload.version>1.3.3</commons.fileupload.version>
+		<hutool.version>5.3.7</hutool.version>
+		<fastjson.version>1.2.70</fastjson.version>
+		<guava.version>29.0-jre</guava.version>
+		<mysql.connector.version>8.0.20</mysql.connector.version>
+		<lombok.version>1.18.12</lombok.version>
+		<mybatis.spring.version>2.1.3</mybatis.spring.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.rocky</groupId>
+			<artifactId>sociality-common</artifactId>
+			<version>${sociality.common.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.rocky</groupId>
+			<artifactId>sociality-redis</artifactId>
+			<version>${sociality.redis.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.istudy</groupId>
+			<artifactId>framework-dependencies</artifactId>
+			<version>${framework.dependencies.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.istudy</groupId>
+			<artifactId>pennyworth-adaptor</artifactId>
+			<version>${pennyworth.adaptor.version}</version>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>com.rocky</groupId>-->
+<!--			<artifactId>sociality-swagger</artifactId>-->
+<!--			<version>1.0.1-SNAPSHOT</version>-->
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>com.istudy</groupId>
+			<artifactId>swagger-dependencies</artifactId>
+			<version>${swagger.dependencies.version}</version>
+		</dependency>
+
+		<!-- pagehelper 分页插件 -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>${pagehelper.boot.version}</version>
+		</dependency>
+
+		<!-- 获取系统信息 -->
+		<dependency>
+			<groupId>com.github.oshi</groupId>
+			<artifactId>oshi-core</artifactId>
+			<version>${oshi.version}</version>
+		</dependency>
+
+		<!--io常用工具类 -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+
+		<!--文件上传工具类 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons.fileupload.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+
+		<!--中间件-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.connector.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring.boot.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${mybatis.spring.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring.boot.version}</version>
+				<configuration>
+					<fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<configuration>
+					<configurationFile>${basedir}/src/main/resources/mybatis-generator/generatorConfig.xml</configurationFile>
+					<verbose>true</verbose>
+					<overwrite>true</overwrite>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.istudy</groupId>
+						<artifactId>pennyworth-adaptor</artifactId>
+						<version>${pennyworth.adaptor.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus_release</id>
+			<name>release</name>
+			<url>http://122.224.234.144:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus_snapshots</id>
+			<name>snapshots</name>
+			<url>http://122.224.234.144:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>
