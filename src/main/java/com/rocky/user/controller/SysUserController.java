@@ -2,14 +2,13 @@ package com.rocky.user.controller;
 
 import com.rocky.common.core.controller.BaseController;
 import com.rocky.common.core.domain.R;
-import com.rocky.user.domain.SysUser;
+import com.rocky.user.facade.vo.SysUserVO;
 import com.rocky.user.service.ISysUserService;
 import com.rocky.user.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +32,7 @@ public class SysUserController extends BaseController {
     @PostMapping("getUserInfo")
     @ApiOperation(value = "查询用户", notes = "查询用户")
     @ApiImplicitParams({@ApiImplicitParam(name = "userId", value = "用户id", required = true)})
-    public Result<SysUser> getUserInfo(Long userId) {
+    public Result<SysUserVO> getUserInfo(Long userId) {
         if (userId == null){
             return new Result<>("150", "入参错误", null); //测试验证
         }
@@ -46,7 +45,7 @@ public class SysUserController extends BaseController {
     @GetMapping("findByUserName/{userName}")
     @ApiOperation(value = "根据登录名查询用户", notes = "根据登录名查询用户")
     @ApiImplicitParams({@ApiImplicitParam(name = "userName", value = "用户登录名", required = true)})
-    public Result<SysUser> selectSysUserByUserName(@PathVariable("userName") String userName) {
+    public Result<SysUserVO> selectSysUserByUserName(@PathVariable("userName") String userName) {
         return sysUserService.selectUserByLoginName(userName);
     }
 
@@ -56,9 +55,9 @@ public class SysUserController extends BaseController {
     @GetMapping("list")
     @ApiOperation(value = "查询用户列表", notes = "查询用户列表")
     @ApiImplicitParams({@ApiImplicitParam(name = "sysUser", value = "用户信息", required = true)})
-    public R list(SysUser sysUser) {
+    public R list(SysUserVO sysUserVO) {
         startPage();
-        return result(sysUserService.selectUserList(sysUser));
+        return result(sysUserService.selectUserList(sysUserVO));
     }
 
 }

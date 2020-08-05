@@ -1,6 +1,8 @@
 package com.rocky.user.service.impl;
 
+import com.rocky.common.utils.OrikaMapperUtils;
 import com.rocky.user.domain.SysUser;
+import com.rocky.user.facade.vo.SysUserVO;
 import com.rocky.user.mapper.SysUserMapper;
 import com.rocky.user.service.ISysUserService;
 import com.rocky.user.utils.Result;
@@ -27,12 +29,14 @@ public class SysUserServiceImpl implements ISysUserService {
     /**
      * 根据条件分页查询用户列表
      * 
-     * @param user 用户信息
+     * @param userVO 用户信息
      * @return 用户信息集合信息
      */
     @Override
-    public List<SysUser> selectUserList(SysUser user) {
-        return userMapper.selectUserList(user);
+    public List<SysUserVO> selectUserList(SysUserVO userVO) {
+        SysUser sysUser = OrikaMapperUtils.map(userVO, SysUser.class);
+        List<SysUser> sysUserList = userMapper.selectUserList(sysUser);
+        return OrikaMapperUtils.mapList(sysUserList, SysUser.class, SysUserVO.class);
     }
 
     /**
@@ -42,9 +46,10 @@ public class SysUserServiceImpl implements ISysUserService {
      * @return 用户对象信息
      */
     @Override
-    public Result<SysUser> selectUserByLoginName(String userName) {
+    public Result<SysUserVO> selectUserByLoginName(String userName) {
         SysUser sysUser = userMapper.selectUserByLoginName(userName);
-        return new Result<>(sysUser);
+        SysUserVO sysUserVO = OrikaMapperUtils.map(sysUser, SysUserVO.class);
+        return new Result<>(sysUserVO);
     }
 
     /**
@@ -54,9 +59,9 @@ public class SysUserServiceImpl implements ISysUserService {
      * @return 用户对象信息
      */
     @Override
-    public Result<SysUser> selectUserById(Long userId) {
+    public Result<SysUserVO> selectUserById(Long userId) {
         SysUser sysUser = userMapper.selectUserById(userId);
-        return new Result<>(sysUser);
+        SysUserVO sysUserVO = OrikaMapperUtils.map(sysUser, SysUserVO.class);
+        return new Result<>(sysUserVO);
     }
-
 }
