@@ -12,7 +12,7 @@
 	<artifactId>project-name</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<name>project-name</name>
-	<description>公销社集成脚手架</description>
+	<description>开源集成脚手架</description>
 
 	<developers>
 		<developer>
@@ -194,12 +194,12 @@
 		<repository>
 			<id>nexus_release</id>
 			<name>release</name>
-			<url>http://122.224.234.144:8081/repository/maven-releases/</url>
+			<url>http://ip:端口/repository/maven-releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus_snapshots</id>
 			<name>snapshots</name>
-			<url>http://122.224.234.144:8081/repository/maven-snapshots/</url>
+			<url>http://ip:端口/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 </project>

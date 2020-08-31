@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.rocky.user.mapper.SysUserMapper">
+<mapper namespace="com.istudy.user.mapper.SysUserMapper">
 
-	<resultMap id="SysUserResult" type="com.rocky.user.domain.SysUser" >
+	<resultMap id="SysUserResult" type="com.istudy.user.domain.SysUser" >
 		<id     property="userId"       column="user_id" jdbcType="INTEGER"/>
 		<result property="loginName"    column="login_name" jdbcType="VARCHAR"/>
 		<result property="userName"     column="user_name"    jdbcType="VARCHAR"/>
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from sys_user u
     </sql>
 	
-	<select id="selectUserList" parameterType="SysUser" resultMap="SysUserResult">
+	<select id="selectUserList" parameterType="com.istudy.user.domain.SysUser" resultMap="SysUserResult">
 		select  u.user_id, u.login_name, u.user_name, u.user_type, u.email, u.phone_number, u.sex, u.avatar, u.password, u.salt, u.status, u.del_flag, u.login_ip, u.login_date, u.create_time, update_time
 		from sys_user u
 		where u.del_flag = '0'
@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		delete from sys_user where user_id = #{userId}
  	</delete>
 
-	<update id="updateUser" parameterType="SysUser">
+	<update id="updateUser" parameterType="com.istudy.user.domain.SysUser">
 		update sys_user
 		<set>
 			<if test="loginName != null and loginName != ''">login_name = #{loginName},</if>
